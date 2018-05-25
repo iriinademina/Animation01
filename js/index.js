@@ -134,6 +134,7 @@ document.personage = new Personage ( {
 var buttonStart = document.createElement('button')
 buttonStart.innerHTML = "START"
 document.body.appendChild(buttonStart)
+buttonStart.style.marginTop = "30px"
 buttonStart.onclick = function (event) {
         document.personage.startMove()
 }
