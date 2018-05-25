@@ -1,6 +1,10 @@
+
 document.routePoints = [
-    [ 50, 50 ], [ 200, 130 ], [ 400, 230 ], [ 100, 320 ]
+    [ 50, 50 ], [ 350, 80 ], [ 580, 190 ], [ 160, 320 ]
 ]
+
+document.pointImage="./images/christmas-tree-lights-animated.gif"
+
 
 var Personage = function ( params ) {
     this.element = document.createElement ( 'img' )
@@ -13,7 +17,7 @@ var Personage = function ( params ) {
                         ? this.defaultPointImage
                         : params.pointImage
     this.route =  !params || !params.routePoints ||
-    						  !Array.isArray ( params.routePoints ) ?
+                  !Array.isArray ( params.routePoints ) ?
                   this.defaultRoute : params.routePoints
     this.setRoutePoints ()
     this.nextPoint = 1
@@ -24,13 +28,16 @@ var Personage = function ( params ) {
     this.delay = !params || !params.timeInterval
                          || typeof params.timeInterval !== "number"
                          ? 100 : params.timeInterval
-    this.interval = setInterval ( this.mc_personage.bind ( this ), this.delay )
+   this.interval = setInterval ( this.mc_personage.bind ( this ), this.delay )
+
+   this.stopMove = function(){
+        clearInterval (this.interval )}.bind ( this )
 }
 
 Personage.prototype.setRoutePoints = function () {
     for ( var item of this.route ) {
-    		if ( !Array.isArray ( item ) ||
-        			typeof item [0] !== 'number' ||
+        if ( !Array.isArray ( item ) ||
+              typeof item [0] !== 'number' ||
               typeof item [1] !== 'number'
         ) continue
         var point = document.createElement ( 'figure' )
@@ -82,29 +89,43 @@ Personage.prototype.mc_personage = function ( event ) {
 }
 
 Personage.prototype.defaultRoute = [
-		[ 50, 50 ], [ 300, 300 ], [ 100, 300 ], [ 200, 50 ]
+    [ 50, 50 ], [ 300, 300 ], [ 100, 300 ], [ 200, 50 ]
 ]
-Personage.prototype.defaultPersonageImage = "./images/personage.gif"
-Personage.prototype.defaultPointImage = "./images/tree.gif"
+Personage.prototype.defaultPersonageImage = "./images/3-santa-sleigh-reindeer.gif"
+Personage.prototype.defaultPointImage = "./images/christmas-tree-white-lights.gif"
+
 
 Personage.prototype.personageStyle = {
-		position: "fixed",
+    position: "fixed",
     top: 0,
     left: 0,
-    width: "50px",
+    width: "90px",
     height: "auto"
 }
 Personage.prototype.pointStyle = {
-		position: "fixed",
+    position: "fixed",
     top: 0,
     left: 0,
-    width: "80px",
-    height: "80px",
+    width: "120px",
+    height: "120px",
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
     backgroundPosition: "center center",
     backgroundImage: "url(" + this.defaultPointImage + ")"
 }
+
+document.personage = new Personage ( {
+      routePoints: document.routePoints,
+      pointImage: document.pointImage // добавлена другая картинка
+})
+
+var buttonStop = document.createElement('button')
+buttonStop.innerHTML = "STOP"
+document.body.appendChild(buttonStop)
+buttonStop.onclick= function (event) {
+        document.personage.stopMove()
+}
+
 
 document.personage = new Personage ( {
       routePoints: document.routePoints
