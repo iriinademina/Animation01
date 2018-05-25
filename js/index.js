@@ -1,5 +1,4 @@
 
-
 document.routePoints = [
     [ 50, 50 ], [ 350, 80 ], [ 580, 190 ], [ 160, 320 ]
 ]
@@ -47,8 +46,8 @@ Personage.prototype.setRoutePoints = function () {
               typeof item [1] !== 'number'
         ) continue
         var point = document.createElement ( 'figure' )
-        
-          point.backgroundImage =  function(){ 
+
+          point.backgroundImage =  function(){
               this.defaultPointImage.forEach(function(item){
                           "url(" + item + ")"})}
 
@@ -97,7 +96,7 @@ Personage.prototype.mc_personage = function ( event ) {
       this.element.style.left = this.currentPosition [0] + 'px'
       this.element.style.top = this.currentPosition [1] + 'px'
       if ( distance [0] === 0 && distance [1] === 0 )
-                            this.getNextPointIndex ()             
+                            this.getNextPointIndex ()
 }
 
 Personage.prototype.defaultRoute = [
@@ -128,8 +127,8 @@ backgroundImage: "url(" + this.defaultPointImage + ")"
 
 document.personage = new Personage ( {
       routePoints: document.routePoints,
-      pointImage: document.pointPicture // добавлена другая картинка 
-       
+      pointImage: document.pointPicture // добавлена другая картинка
+
 })
 
 var buttonStart = document.createElement('button')
