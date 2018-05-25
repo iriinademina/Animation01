@@ -144,11 +144,3 @@ document.body.appendChild(buttonStop)
 buttonStop.onclick= function (event) {
         document.personage.stopMove()
 }
-
-        document.personage.stopMove()
-}
-
-
-document.personage = new Personage ( {
-      routePoints: document.routePoints
-})
