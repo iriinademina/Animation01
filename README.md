@@ -3,4 +3,4 @@
 Калькулятор.
 
 Опубликованный вариант:
-https://repl.it/@Heluna/FinalProject
+https://iriinademina.github.io/Animation01/
