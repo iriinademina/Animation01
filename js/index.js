@@ -1,6 +1,6 @@
 
 document.routePoints = [
-    [ 50, 50 ], [ 350, 80 ], [ 580, 190 ], [ 160, 320 ]
+      [ 50, 50 ], [ 350, 40 ], [ 750, 240 ], [ 160, 520 ]
 ]
 
 document.pointPicture="./images/christmas-tree-lights-animated.gif"
@@ -20,7 +20,7 @@ var Personage = function ( params ) {
     						  !Array.isArray ( params.routePoints ) ?
                   this.defaultRoute : params.routePoints
     this.setRoutePoints ()
-    this.nextPoint = 1
+    this.nextPoint = 2
     this.currentPosition = this.route [0]
     this.velocity = !params || !params.velocity
                             || typeof params.velocity !== "number"
@@ -134,7 +134,8 @@ document.personage = new Personage ( {
 var buttonStart = document.createElement('button')
 buttonStart.innerHTML = "START"
 document.body.appendChild(buttonStart)
-buttonStart.style.marginTop = "30px"
+buttonStart.style.marginTop = "40px"
+
 buttonStart.onclick = function (event) {
         document.personage.startMove()
 }
